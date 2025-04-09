@@ -127,57 +127,7 @@ portfolio/
 - `initHeroAnimations()`: Advanced animations for hero section
 - `initScrollToTop()`: Scroll to top functionality
 
-## Getting Started
 
-1. Clone this repository or download the files
-2. Open `index.html` in your browser to view the website
-3. Customize the content in `index.html` to reflect your own information
-4. Add your project images to the `src/assets/` directory
-5. Modify colors and styles in `src/styles/main.css` if desired
-
-## Customization
-
-### Colors and Themes
-
-You can easily customize the color scheme by modifying the CSS variables in the `:root` section of `src/styles/main.css`. The website includes both light and dark theme variables:
-
-```css
-:root {
-    /* Light theme (default) */
-    --primary-color: #4a6cff;
-    --primary-hover: #3a5bf0;
-    --secondary-color: #8256e8;
-    --accent-color: #00e5ff;
-    /* other variables */
-}
-
-[data-theme="dark"] {
-    /* Dark theme */
-    --primary-color: #6a8cff;
-    --primary-hover: #5a7bf0;
-    --secondary-color: #9266f8;
-    --accent-color: #20f5ff;
-    --light-color: #121224; /* Background becomes dark */
-    --dark-color: #f8f9ff;  /* Text becomes light */
-    /* other variables */
-}
-```
-
-### Font Family
-
-To change the font family, update the Google Fonts link in the `<head>` of `index.html` and change the font variables in `src/styles/main.css`.
-
-### Project Images
-
-Replace the placeholder project images in the `src/assets/` directory with your own project screenshots or images.
-
-## License
-
-This project is available as open source under the terms of the MIT License.
-
-## Author
-
-Ujjaval Bhardwaj - Data Scientist
 
 ## Acknowledgments
 
