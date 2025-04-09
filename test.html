@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test File</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2d46b9;
+            text-align: center;
+        }
+        .test-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resource Loading Test</h1>
+    
+    <div class="test-item">
+        <h2>CSS Files</h2>
+        <div id="css-test">Testing...</div>
+    </div>
+    
+    <div class="test-item">
+        <h2>Image Files</h2>
+        <p>Profile Image:</p>
+        <img src="src/assets/profile.jpg" alt="Profile" id="profile-img">
+        
+        <p>Project 1 Image:</p>
+        <img src="src/assets/project1.jpg" alt="Project 1" id="project1-img">
+    </div>
+    
+    <script>
+        // Test CSS loading
+        function testCSS(url) {
+            const links = document.querySelectorAll('link[rel="stylesheet"]');
+            for (let i = 0; i < links.length; i++) {
+                if (links[i].href.includes(url)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        const cssTestElement = document.getElementById('css-test');
+        const mainCSSLoaded = testCSS('main.css');
+        const layoutCSSLoaded = testCSS('layout.css');
+        const sectionsCSSLoaded = testCSS('sections.css');
+        
+        if (mainCSSLoaded && layoutCSSLoaded && sectionsCSSLoaded) {
+            cssTestElement.innerHTML = '<span class="success">All CSS files are properly linked!</span>';
+        } else {
+            cssTestElement.innerHTML = '<span class="error">Some CSS files are not linked properly:</span><br>';
+            cssTestElement.innerHTML += `main.css: <span class="${mainCSSLoaded ? 'success' : 'error'}">${mainCSSLoaded ? 'Loaded' : 'Not Loaded'}</span><br>`;
+            cssTestElement.innerHTML += `layout.css: <span class="${layoutCSSLoaded ? 'success' : 'error'}">${layoutCSSLoaded ? 'Loaded' : 'Not Loaded'}</span><br>`;
+            cssTestElement.innerHTML += `sections.css: <span class="${sectionsCSSLoaded ? 'success' : 'error'}">${sectionsCSSLoaded ? 'Loaded' : 'Not Loaded'}</span><br>`;
+        }
+        
+        // Test image loading
+        function testImage(imageId) {
+            const img = document.getElementById(imageId);
+            img.onerror = function() {
+                const errorMsg = document.createElement('p');
+                errorMsg.innerHTML = `<span class="error">Error loading image!</span>`;
+                img.parentNode.insertBefore(errorMsg, img.nextSibling);
+            };
+            img.onload = function() {
+                const successMsg = document.createElement('p');
+                successMsg.innerHTML = `<span class="success">Image loaded successfully!</span>`;
+                img.parentNode.insertBefore(successMsg, img.nextSibling);
+            };
+        }
+        
+        testImage('profile-img');
+        testImage('project1-img');
+    </script>
+</body>
+</html> 
